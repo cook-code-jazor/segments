@@ -14,6 +14,7 @@
         const contentType = response.headers.get('content-type')
         if(contentType && contentType.indexOf('/json') > 0) return await response.json();
         if(contentType && contentType.indexOf('text/') === 0) return await response.text();
+        return response;
     }
     async function get_ (url, method) {
         const res = await fetch(url, {
