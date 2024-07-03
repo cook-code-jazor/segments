@@ -11,7 +11,18 @@
         for (let o = 0; o < t.length; o++) {
             const n = t[o],
                 i = n.name;
-            i && ('_http_method' !== i ? 'checkbox' !== n.type ? 'radio' !== n.type ? e.fields[i] = n.value : n.checked && (e.fields[i] = n.value) : n.checked && (e.fields.hasOwnProperty(i) ? e.fields[i] = [e.fields[i], n.value] : e.fields[i] = n.value) : e.method = n.value.toLowerCase())
+            i && (
+                '_http_method' !== i 
+                ? 'checkbox' !== n.type 
+                    ? 'radio' !== n.type 
+                        ? e.fields[i] = n.value 
+                        : n.checked && (e.fields[i] = n.value) 
+                    : n.checked && (
+                        e.fields.hasOwnProperty(i) 
+                        ? e.fields[i] = [e.fields[i], n.value] 
+                        : e.fields[i] = n.value
+                    ) 
+                : e.method = n.value.toLowerCase())
         }
         return e
     }
